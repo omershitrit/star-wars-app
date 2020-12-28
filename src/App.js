@@ -48,6 +48,8 @@ export default class App extends React.Component {
       .catch(error => console.log("SOMETHING WENT WRONG"));
   }
 
+  g = () => { }
+
   componentDidMount = () => {
     this.getData();
   }
