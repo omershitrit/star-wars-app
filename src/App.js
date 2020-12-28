@@ -1,12 +1,22 @@
 import React from 'react';
+import './App.css';
 import axios from 'axios';
+import logo from './photos/logo.png';
+import Item from './components/item.js';
+import GreenSword from './photos/green_sword.png';
+import BlueSword from './photos/blue_sword.png';
+import PurpleSword from './photos/purple_sword.png';
+import redSword from './photos/red_sword.png';
+import TextField from '@material-ui/core/TextField';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 export default class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      people: []
+      people: [],
+      filteredPeople: []
     };
   }
 
@@ -18,7 +28,10 @@ export default class App extends React.Component {
   getData = () => {
     (async () => {
       const starwarsPeople = await this.getAllStarwarsPeople();
-      this.setState({ people: starwarsPeople });
+      this.setState({
+        people: starwarsPeople,
+        filteredPeople: starwarsPeople
+      });
     })();
   }
 
@@ -48,22 +61,48 @@ export default class App extends React.Component {
       .catch(error => console.log("SOMETHING WENT WRONG"));
   }
 
-  g = () => { }
-
   componentDidMount = () => {
     this.getData();
   }
 
+  calculateImage = (index) => {
+    const r = index % 4;
+    if (r === 0) { return GreenSword; }
+    if (r === 1) { return PurpleSword; }
+    if (r === 2) { return BlueSword; }
+    if (r === 3) { return redSword; }
+  }
+
   showPeople = () => {
-    return this.state.people.map((e, index) => (<div key={index}>{e.name}</div>))
+    return this.state.filteredPeople.map((e, index) => (
+      <Item key={index} className="item" name={e.name} image={this.calculateImage(index)}>{e.name}</Item>)
+    )
+  }
+
+  handleChange = (e) => {
+    const value = e.target.value;
+    const newFilteredPeople = this.state.people.filter((element) => element.name.startsWith(value));
+    this.setState({ filteredPeople: newFilteredPeople });
   }
 
   render() {
     return (
-      <div>
-        {this.showPeople()}
-        {this.state.people.length}
-      </div>
+      <Router>
+        <div className="app">
+          <img className="logo" src={logo} />
+          <TextField
+            className="field"
+            placeholder="Search"
+            variant="outlined"
+            color="secondary"
+            onChange={this.handleChange}
+            style={{ marginBottom: '20px', width: '300px' }}
+          />
+          <div className="people">
+            {this.showPeople()}
+          </div>
+        </div >
+      </Router>
     );
   }
 

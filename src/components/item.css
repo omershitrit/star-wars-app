@@ -1,0 +1,15 @@
+.item {
+    margin-bottom: 11px;
+    padding: 4px;
+}
+
+.name {
+    display: block;
+    color: white;
+}
+
+.sword {
+    display: inline;
+    max-width: 145px;
+}
+
