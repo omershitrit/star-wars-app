@@ -66,7 +66,9 @@ export default class Home extends React.Component {
 
     handleChange = (e) => {
         const value = e.target.value;
-        const newFilteredPeople = this.state.people.filter(el => el.name.toLowerCase().startsWith(value) || el.name.toUpperCase().startsWith(value));
+        const newFilteredPeople = this.state.people.filter(el => el.name.toLowerCase().startsWith(value)
+            || el.name.toUpperCase().startsWith(value)
+            || el.name.startsWith(value));
         this.setState({ filteredPeople: newFilteredPeople, showButtons: newFilteredPeople.length > PER_PAGE, page: 0 });
     }
 
