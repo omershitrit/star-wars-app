@@ -1,11 +1,22 @@
 .item {
     margin-bottom: 11px;
-    padding: 4px;
+    padding: 0px 75px 0px 75px;
 }
 
 .name {
     display: block;
     color: white;
+    user-select: none;
+}
+
+.link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.name:hover {
+    color: rgb(42, 238, 42);
+    transition: .75s;
 }
 
 .sword {

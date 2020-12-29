@@ -1,0 +1,36 @@
+body {
+  background: rgb(204, 204, 204);
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(204, 204, 204);
+  }
+  
+  .logo {
+    position: relative;
+    display: inline;
+    padding-top: 2rem;
+    margin-bottom: 1rem;
+    width: 350px;
+    border-radius: 35%;
+  }
+  
+  .regular-people {
+    background-color: rgb(204, 204, 204);
+    border: 3px solid rgb(255, 255, 255);
+  }
+
+  .people {
+    background-color: black;
+    border: 3px solid rgb(207, 173, 21);
+  }
+  
+  .field {
+    position: absolute;
+    display: none;
+    margin-bottom: 10rem;
+  }
