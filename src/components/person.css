@@ -27,7 +27,7 @@
     display:inline-block;
     padding:0.7em 0em;
     border:0.16em solid #979494c4;
-    margin:0 0.3em 0.3em 0;
+    margin:0 3em 0.3em 0;
     box-sizing: border-box;
     text-decoration:none;
     font-family:'Roboto',sans-serif;
@@ -71,5 +71,4 @@
 
 .value {
     color: rgb(240, 128, 128);
-    user-select: none;
 }
