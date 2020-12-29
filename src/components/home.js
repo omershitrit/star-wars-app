@@ -66,8 +66,8 @@ export default class Home extends React.Component {
 
     handleChange = (e) => {
         const value = e.target.value;
-        const newFilteredPeople = this.state.people.filter((element) => element.name.startsWith(value));
-        this.setState({ filteredPeople: newFilteredPeople });
+        const newFilteredPeople = this.state.people.filter(el => el.name.toLowerCase().startsWith(value) || el.name.toUpperCase().startsWith(value));
+        this.setState({ filteredPeople: newFilteredPeople, showButtons: newFilteredPeople.length > PER_PAGE, page: 0 });
     }
 
     calculateImage = (index) => {
@@ -90,13 +90,12 @@ export default class Home extends React.Component {
         return arr.slice(this.state.page * PER_PAGE, this.state.page * PER_PAGE + PER_PAGE);
     }
 
-    handlePrevClick = () => this.setState({ page: this.state.page > 0 ? this.state.page - 1 : 0 }, () => console.log(this.state.page));
+    handlePrevClick = () => this.setState({ page: this.state.page > 0 ? this.state.page - 1 : 0 });
 
     handleNextClick = () => {
         const n = this.state.filteredPeople.length;
         const maxPage = Math.floor(n / PER_PAGE);
-        console.log(this.state.people)
-        this.setState({ page: this.state.page < maxPage ? this.state.page + 1 : maxPage }, () => console.log(this.state.page));
+        this.setState({ page: this.state.page < maxPage ? this.state.page + 1 : maxPage });
     }
 
 
@@ -113,12 +112,14 @@ export default class Home extends React.Component {
                     onChange={this.handleChange}
                     style={{ marginBottom: '20px', width: '300px' }}
                 />
-                <div className={this.state.filteredPeople.length === 0 ? "regularPeople" : "people"}>
+                <div className={this.state.filteredPeople.length === 0 ? "hide-people" : "people"}>
                     {this.showPeople()}
                 </div>
                 <div className="buttons">
-                    <button className={this.state.showButtons ? "btn" : "hide-btn"} onClick={this.handlePrevClick}>prev</button>
-                    <button className={this.state.showButtons ? "btn" : "hide-btn"} onClick={this.handleNextClick}>next</button>
+                    <button className={this.state.showButtons ? "btn" : "hide"} onClick={this.handlePrevClick}>prev</button>
+                    <div className={this.state.showButtons ? "mark" : "hide"}>{this.state.page}</div>
+                    <button className={this.state.showButtons ? "btn" : "hide"} onClick={this.handleNextClick}>next</button>
+
                 </div>
             </div >
         );
