@@ -2,6 +2,10 @@ body {
   background: rgb(61, 61, 61);
 }
 
+img {
+  user-select: none;
+}
+
 .app {
     display: flex;
     flex-direction: column;

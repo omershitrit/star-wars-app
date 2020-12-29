@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import './person.css';
 import PersonImage from '../photos/person.png';
+import YudaImage from '../photos/yuda.png';
 
 class Person extends React.Component {
 
@@ -28,7 +29,7 @@ class Person extends React.Component {
         const enteries = Object.entries(this.state.data);
         return enteries.map((e, index) => (
             <div className="cell" key={index}>
-                <div className="headline">{e[0]}</div>
+                <div className="headline">{e[0]}:</div>
                 {this.showData(e[1])}
             </div>
         ))
@@ -40,6 +41,7 @@ class Person extends React.Component {
         return (
             <div className="person">
                 <img className="img" src={PersonImage} />
+                <img className="img2" src={YudaImage} />
                 <div className="container">
                     <div className="data">
                         {this.getCells()}

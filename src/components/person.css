@@ -1,8 +1,17 @@
 .img {
-    position: absolute;
+    position: fixed;
     top: 10%;
     left: 5%;
     width: 15%;
+    min-height: 200px;
+    border-radius: 15%;
+}
+
+.img2 {
+    position: fixed;
+    top: 10%;
+    right:50px;
+    width: 30%;
     min-height: 200px;
     border-radius: 15%;
 }
@@ -27,11 +36,13 @@
     color:#ffffff;
     font-weight: bold;
     background-color: rgb(105, 105, 112);
-    top: 10rem;
+    top: 1rem;
     padding: 7px 12px 7px 12px ;
     text-shadow: 2px 2px 4px #000000;
+    box-shadow: 0px 3px 8px 2px #888888;
     text-align:center;
     transition: all 0.15s;
+    user-select: none;
 }
 
 .container {
@@ -55,8 +66,10 @@
     color: rgb(225, 225, 233);
     font-size: 20px;
     font-weight: bold;
+    user-select: none;
 }
 
 .value {
     color: rgb(240, 128, 128);
+    user-select: none;
 }
