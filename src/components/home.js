@@ -9,6 +9,8 @@ import PurpleSword from '../photos/purple_sword.png';
 import redSword from '../photos/red_sword.png';
 import TextField from '@material-ui/core/TextField';
 
+const PER_PAGE = 6;
+
 export default class Home extends React.Component {
 
     constructor(props) {
@@ -16,7 +18,9 @@ export default class Home extends React.Component {
         this.state = {
             people: [],
             filteredPeople: [],
-            propsToPerson: {}
+            propsToPerson: {},
+            page: 0,
+            showButtons: true
         };
     }
 
@@ -74,16 +78,27 @@ export default class Home extends React.Component {
         if (r === 3) { return redSword; }
     }
 
-    /*handleClick = (name) => {
-        console.log("clicked was made on: ", name);
-        //this.setState({ propsToPerson: name });
-    }*/
-
     showPeople = () => {
-        return this.state.filteredPeople.map((e, index) => (
-            <Item key={index} className="item" handleClick={this.handleClick} data={e} image={this.calculateImage(index)}>{e.name}</Item>)
-        )
+        let arr = this.state.filteredPeople.map((e, index) => (
+            <Item
+                key={index}
+                className="item"
+                data={e}
+                image={this.calculateImage(index)}>
+                {e.name}
+            </Item>));
+        return arr.slice(this.state.page * PER_PAGE, this.state.page * PER_PAGE + PER_PAGE);
     }
+
+    handlePrevClick = () => this.setState({ page: this.state.page > 0 ? this.state.page - 1 : 0 }, () => console.log(this.state.page));
+
+    handleNextClick = () => {
+        const n = this.state.filteredPeople.length;
+        const maxPage = Math.floor(n / PER_PAGE);
+        console.log(this.state.people)
+        this.setState({ page: this.state.page < maxPage ? this.state.page + 1 : maxPage }, () => console.log(this.state.page));
+    }
+
 
     render() {
         return (
@@ -100,6 +115,10 @@ export default class Home extends React.Component {
                 />
                 <div className={this.state.filteredPeople.length === 0 ? "regularPeople" : "people"}>
                     {this.showPeople()}
+                </div>
+                <div className="buttons">
+                    <button className={this.state.showButtons ? "btn" : "hide-btn"} onClick={this.handlePrevClick}>prev</button>
+                    <button className={this.state.showButtons ? "btn" : "hide-btn"} onClick={this.handleNextClick}>next</button>
                 </div>
             </div >
         );

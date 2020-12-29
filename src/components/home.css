@@ -19,6 +19,12 @@ body {
     border-radius: 35%;
   }
   
+  .field {
+    position: absolute;
+    display: none;
+    margin-bottom: 10rem;
+  }
+
   .regular-people {
     background-color: rgb(204, 204, 204);
     border: 3px solid rgb(255, 255, 255);
@@ -28,9 +34,11 @@ body {
     background-color: black;
     border: 3px solid rgb(207, 173, 21);
   }
-  
-  .field {
-    position: absolute;
+
+  .btn {
+
+  }
+
+  .hide-btn {
     display: none;
-    margin-bottom: 10rem;
   }
