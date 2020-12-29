@@ -110,14 +110,19 @@ export default class Home extends React.Component {
                     color="primary"
                     style={{ backgroundColor: "red" }}
                     onChange={this.handleChange}
-                    style={{ marginBottom: '20px', width: '300px' }}
+                    style={{ marginBottom: '20px', width: '300px', backgroundColor: "grey" }}
+                    InputProps={{
+                        style: {
+                            color: "white"
+                        }
+                    }}
                 />
                 <div className={this.state.filteredPeople.length === 0 ? "hide-people" : "people"}>
                     {this.showPeople()}
                 </div>
                 <div className="buttons">
                     <button className={this.state.showButtons ? "btn" : "hide"} onClick={this.handlePrevClick}>prev</button>
-                    <div className={this.state.showButtons ? "mark" : "hide"}>{this.state.page}</div>
+                    <div className={this.state.showButtons ? "mark" : "hide"}>{this.state.page + 1}</div>
                     <button className={this.state.showButtons ? "btn" : "hide"} onClick={this.handleNextClick}>next</button>
 
                 </div>

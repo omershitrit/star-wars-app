@@ -22,5 +22,6 @@
 .sword {
     display: inline;
     max-width: 145px;
+    user-select: none;
 }
 
