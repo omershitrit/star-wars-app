@@ -8,23 +8,18 @@ class Person extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             data: props.location.state.propsToPerson
         };
     }
 
-    showArray = arr => arr.map((e, index) => <div className="attr-style" key={index}>{e}</div>);
+    // used to show the data in an array, for example: films
+    showArray = arr => arr.map((e, index) => <div className="value" key={index}>{e}</div>)
 
-    showData = (e) => {
-        if (Array.isArray(e)) {
-            return <div className="data">
-                {e.map((el, index) => <div className="value">{el}</div>)}
-            </div>
-        }
-        return <div className="value">{e}</div>;
-    }
+    // shows the data; if its an array uses the above function
+    showData = e => Array.isArray(e) ? <div className="data">{this.showArray(e)}</div> : <div className="value">{e}</div>
 
+    // generate the data
     getCells = () => {
         const enteries = Object.entries(this.state.data);
         return enteries.map((e, index) => (
@@ -32,16 +27,14 @@ class Person extends React.Component {
                 <div className="headline">{e[0]}:</div>
                 {this.showData(e[1])}
             </div>
-        ))
+        ));
     }
-
-    //getHeadlines = () => Object.entries(this.state.data).map((e, index) => <div className="cell">{e}</div>)
 
     render() {
         return (
             <div className="person">
-                <img className="img" src={PersonImage} />
-                <img className="img2" src={YudaImage} />
+                <img className="img" src={PersonImage} alt="BG_IMAGE" />
+                <img className="img2" src={YudaImage} alt="BG_IMAGE" />
                 <div className="container">
                     <div className="data">
                         {this.getCells()}

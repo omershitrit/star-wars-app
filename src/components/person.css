@@ -16,12 +16,6 @@
     border-radius: 15%;
 }
 
-.attr-style {
-    position: relative;
-    top: 5rem;
-    margin-bottom: 1rem;
-}
-
 .button {
     position: relative;
     display:inline-block;

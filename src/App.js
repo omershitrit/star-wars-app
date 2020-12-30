@@ -5,17 +5,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export default class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    console.log(props)
-  }
-
-  //shouldComponentUpdate = () => this.state.people.length === 0
-
-  /*
-  An async anonymous function that waits for all the queries before calling to setState.
-  */
-
   render() {
     return (
       <Router>
