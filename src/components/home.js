@@ -82,6 +82,7 @@ export default class Home extends React.Component {
         return redSword;
     }
 
+    // calculates and returns the current page
     showPeople = () => {
         let arr = this.state.filteredPeople.map((e, index) => (
             <Item key={index} className="item" data={e} image={this.getImage(index)}>
