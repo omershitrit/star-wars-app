@@ -92,8 +92,10 @@ export default class Home extends React.Component {
         return arr.slice(this.state.page * PER_PAGE, this.state.page * PER_PAGE + PER_PAGE);
     }
 
+    // handles a click on prev button
     handlePrevClick = () => this.setState({ page: this.state.page > 0 ? this.state.page - 1 : 0 });
 
+    // handles a click on next button
     handleNextClick = () => {
         const n = this.state.filteredPeople.length;
         const maxPage = Math.floor(n / PER_PAGE);
