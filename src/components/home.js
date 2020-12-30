@@ -62,7 +62,7 @@ export default class Home extends React.Component {
     }
 
     // get the data when rendering is done
-    componentDidMount = () => { this.getData(); }
+    componentDidMount = () => this.getData();
 
     // filters immediately upon writing
     handleChange = e => {
